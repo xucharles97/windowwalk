@@ -8,8 +8,8 @@ spring:
     default-property-inclusion: non_null
     property-naming-strategy: SNAKE_CASE
   datasource:
-    url: jdbc:postgresql://${DATABASE_URL:localhost}:${DATABASE_PORT:5433}/onlineorder
-    username: ${DATABASE_USERNAME:user}
+    url: jdbc:postgresql://${DATABASE_URL:localhost}:${DATABASE_PORT:5432}/windowwalk
+    username: ${DATABASE_USERNAME:postgres}
     password: ${DATABASE_PASSWORD:secret}
     driver-class-name: org.postgresql.Driver
   sql:
