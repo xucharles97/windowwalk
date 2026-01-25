@@ -7,6 +7,7 @@ import com.xucharles97.windowwalk.model.MenuItemDto;
 import com.xucharles97.windowwalk.model.RestaurantDto;
 import com.xucharles97.windowwalk.repository.MenuItemRepository;
 import com.xucharles97.windowwalk.repository.RestaurantRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class RestaurantService {
     }
 
     // Returns a list of all the Restaurants in the repository
+    @Cacheable("restaurants")
     public List<RestaurantDto> getRestaurants() {
         List<RestaurantEntity> restaurantEntities = restaurantRepository.findAll();
         List<MenuItemEntity> menuItemEntities = menuItemRepository.findAll();

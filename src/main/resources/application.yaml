@@ -5,6 +5,9 @@ logging:
     org.springframework.jdbc.core: DEBUG # SQL
 
 spring:
+  cache:
+    caffeine:
+      spec: expireAfterWrite=60s
   jackson:
     default-property-inclusion: non_null
     property-naming-strategy: SNAKE_CASE
