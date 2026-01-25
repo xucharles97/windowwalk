@@ -18,8 +18,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-// Sandbox test file for JDBC implementations
-
 @Component
 public class DevRunner implements ApplicationRunner {
 
@@ -33,6 +31,7 @@ public class DevRunner implements ApplicationRunner {
     private final CartService cartService;
     private final MenuItemService menuItemService;
     private final RestaurantService restaurantService;
+    private final CustomerService customerService;
 
     public DevRunner(
             CartRepository cartRepository,
@@ -42,7 +41,8 @@ public class DevRunner implements ApplicationRunner {
             RestaurantRepository restaurantRepository,
             CartService cartService,
             MenuItemService menuItemService,
-            RestaurantService restaurantService) {
+            RestaurantService restaurantService,
+            CustomerService customerService) {
         this.cartRepository = cartRepository;
         this.customerRepository = customerRepository;
         this.menuItemRepository = menuItemRepository;
@@ -51,8 +51,15 @@ public class DevRunner implements ApplicationRunner {
         this.cartService = cartService;
         this.menuItemService = menuItemService;
         this.restaurantService = restaurantService;
+        this.customerService = customerService;
     }
 
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        customerService.signUp("foo@mail.com", "123456", "Foo", "Bar");
+    }
+
+    /* Testing initialization stuff
     @Override
     public void run(ApplicationArguments args) throws Exception {
         CustomerEntity customer0 = new CustomerEntity(null, "user_a@mail.com", "123", true, "Foo", "Bar");
@@ -123,4 +130,5 @@ public class DevRunner implements ApplicationRunner {
 
         logger.info(cartService.getCart(1L).toString());
     }
+    */
 }
