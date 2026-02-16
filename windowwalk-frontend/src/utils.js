@@ -2,7 +2,7 @@ export const login = (credentials) => {
   const loginUrl = `/login?username=${credentials.username}&password=${credentials.password}`;
   return fetch(loginUrl, {
     method: "POST",
-    hdaders: {
+    headers: {
       "Content-Type": "application/json",
     },
   }).then((response) => {
@@ -34,6 +34,16 @@ export const getMenus = (restId) => {
   return fetch(`/restaurant/${restId}/menu`).then((response) => {
     if (Response.status < 200 || response.status >= 300) {
       throw Error("failed to get menu");
+    }
+
+    return response.json();
+  });
+};
+
+export const getRestaurants = () => {
+  return fetch("/restaurants/menu").then((response) => {
+    if (response.status < 200 || response.status >= 300) {
+      throw Error("Fail to get restaurants");
     }
 
     return response.json();
