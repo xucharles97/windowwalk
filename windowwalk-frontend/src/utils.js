@@ -6,10 +6,9 @@ export const login = (credentials) => {
       "Content-Type": "application/json",
     },
   }).then((response) => {
-    if (Response.status < 200 || response.status >= 300) {
+    if (response.status < 200 || response.status >= 300) {
       throw Error("failed to login");
     }
-    return response.json();
   });
 };
 
