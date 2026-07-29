@@ -7,6 +7,7 @@ import LoginForm from "./components/LoginForm";
 import MyCart from "./components/MyCart";
 import SignupForm from "./components/SignupForm";
 import FoodList from "./components/FoodList";
+import Logout from "./components/Logout";
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
@@ -28,7 +29,16 @@ const App = () => {
           >
             WindowWalk
           </Title>
-          <div>{authed ? <MyCart /> : <SignupForm />}</div>
+          <div>
+            {authed ? (
+              <>
+                {" "}
+                <Logout onSuccess={() => setAuthed(false)} /> <MyCart />{" "}
+              </>
+            ) : (
+              <SignupForm />
+            )}
+          </div>
         </div>
       </Header>
       <Content
